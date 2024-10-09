@@ -27,7 +27,7 @@ export const sendPasswordEmail : ({ receiver, password } : { receiver: string; p
             Your Password: ${password}`,
         });
 
-    } catch (error) {
+    } catch {
         return false;
     }
 

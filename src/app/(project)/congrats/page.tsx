@@ -10,7 +10,7 @@ import Faq from '@/app/components/Faq';
 
 const Congrats = () => {
   const { lang } = useContext(LanguageContext);
-  const [showIframe, setShowIframe] = useState(false);
+  const [showIframe] = useState(false);
   return (
     <main>
       <Image src={lang == "tr" ? bg_tr : bg_en} alt="" className="w-full pointer-events-none" />
