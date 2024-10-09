@@ -3,7 +3,7 @@ import { FeedbackContex } from "@/context/FeedbackContext";
 import { LanguageContext } from "@/context/LanguageContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 
 export default function RootLayout({
     children,
@@ -41,6 +41,7 @@ export default function RootLayout({
     
     return (
         <main>
+            <Suspense>
             <LanguageContext.Provider value={{ lang, setLang }}>
                 <ModalContext.Provider value={{
                     isKvkkOpen, setIsKvkkOpen,
@@ -57,6 +58,7 @@ export default function RootLayout({
                     </FeedbackContex.Provider>
                 </ModalContext.Provider>
             </LanguageContext.Provider>
+            </Suspense>
         </main>
     )
   }
