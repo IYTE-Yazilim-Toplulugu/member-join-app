@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -29,7 +30,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <main className="container mx-auto max-w-md bg-[#FFE5D7]">
-          {children}
+          <Suspense>
+            {children}
+          </Suspense>
         </main>
       </body>
     </html>
