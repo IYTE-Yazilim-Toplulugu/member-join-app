@@ -1,5 +1,5 @@
 import { UserRole } from "@/models/user.model";
-import mongoose, { Model, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const userSchema = new Schema({
     schoolNumber: {type: String, required: true},
