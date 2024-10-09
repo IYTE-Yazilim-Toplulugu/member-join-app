@@ -15,7 +15,7 @@ import LanguageBtn from "../components/LanguageBtn";
 
 
 export default function Home() {
-  const { lang, setLang } = useContext(LanguageContext);
+  const { lang } = useContext(LanguageContext);
   return (
     <div className="w-full">
       {/* Modals */}

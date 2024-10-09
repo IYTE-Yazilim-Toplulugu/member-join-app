@@ -1,5 +1,5 @@
 import { UserRole } from "@/models/user.model";
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from "mongoose";
 
 const userSchema = new Schema({
     schoolNumber: {type: String, required: true},
@@ -15,10 +15,10 @@ const userSchema = new Schema({
 }, { timestamps: true });
 
 
-let UserModel : mongoose.Model<any>
+let UserModel: Model<any, unknown, unknown, unknown, any, any>;
 try {
     UserModel = mongoose.model("users");
-} catch (error) {
+} catch {
     UserModel = mongoose.model("users", userSchema);
 }
 

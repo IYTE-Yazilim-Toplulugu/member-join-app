@@ -5,7 +5,6 @@ import { generatePassword } from '../functions/passwordGenerator';
 import axios from 'axios';
 import { FeedbackContex } from '@/context/FeedbackContext';
 import { LanguageContext } from '@/context/LanguageContext';
-import Cookies from 'js-cookie';
 
 const Form = () => {
     const { lang } = useContext(LanguageContext);

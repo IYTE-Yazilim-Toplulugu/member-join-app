@@ -14,6 +14,7 @@ export const sendPasswordEmail : ({ receiver, password } : { receiver: string; p
     try {
         await transport.verify();
     } catch (error) {
+        console.log(error);
         return false;
     }
 
@@ -35,5 +36,6 @@ export const sendPasswordEmail : ({ receiver, password } : { receiver: string; p
 
 
 export const sendWelcomeEmail = ({ receiver, password } : { receiver: string; password : string}) => {
-
+    console.log(receiver);
+    console.log(password);
 }

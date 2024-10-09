@@ -6,10 +6,9 @@ import UserModel from "@/schemas/user.schema";
 import { NextRequest, NextResponse } from "next/server";
 
 import jwt from 'jsonwebtoken';
-import cookie from 'cookie';
 
 
-export const POST = async (request: NextRequest, response: NextResponse) => {
+export const POST = async (request: NextRequest) => {
     try {
         const data = await request.json();
         await ConnectDB();
@@ -19,8 +18,8 @@ export const POST = async (request: NextRequest, response: NextResponse) => {
         const token = jwt.sign(data, process.env.SECRET_KEY!, { expiresIn: '7d' });
 
         return NextResponse.json({ message: "Member Saved", token: token }, { status: 201 });
-
     } catch (error) {
+        console.log(error);
         return NextResponse.json({ message: "Member Cannot Saved" }, { status: 401 });
     }
 }
