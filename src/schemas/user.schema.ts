@@ -15,7 +15,8 @@ const userSchema = new Schema({
 }, { timestamps: true });
 
 
-let UserModel: Model<any, unknown, unknown, unknown, any, any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let UserModel = mongoose.Model<any>;
 try {
     UserModel = mongoose.model("users");
 } catch {
