@@ -15,7 +15,7 @@ export const POST = async (request : NextRequest) => {
         else {
             return NextResponse.json({ message: "Member Cannot Found" }, { status: 404 });    
         }
-    } catch (error) {
+    } catch {
         return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
     }
 }
