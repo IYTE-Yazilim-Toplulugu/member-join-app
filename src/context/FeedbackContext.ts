@@ -4,6 +4,9 @@ const FeedbackContextState = {
     error: false,
     setError: () => false,
 
+    rateLimit: false,
+    setRateLimit: () => false,
+
     userExist: false,
     setUserExist: () => false,
 
@@ -17,6 +20,9 @@ const FeedbackContextState = {
 export type FeedbackContext = {
     error: boolean,
     setError: Dispatch<SetStateAction<boolean>>,
+
+    rateLimit: boolean,
+    setRateLimit: Dispatch<SetStateAction<boolean>>,
 
     userExist: boolean,
     setUserExist: Dispatch<SetStateAction<boolean>>,

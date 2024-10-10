@@ -8,9 +8,12 @@ const userSchema = new Schema({
     email: {type: String, required: true},
     password: {type: String, required: false},
     department: {type: String, required: true},
+    
+    token: {type: String, required: true},
 
     role: {type: String, required: true, default: UserRole.MEMBER},
-    isSpecial: {type: Boolean, required: true, default: false}
+    isSpecial: {type: Boolean, required: true, default: false},
+
 
 }, { timestamps: true });
 
@@ -18,9 +21,9 @@ const userSchema = new Schema({
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let UserModel = mongoose.Model<any>;
 try {
-    UserModel = mongoose.model("users");
+    UserModel = mongoose.model("user");
 } catch {
-    UserModel = mongoose.model("users", userSchema);
+    UserModel = mongoose.model("user", userSchema);
 }
 
 export default UserModel;

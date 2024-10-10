@@ -10,7 +10,7 @@ const Form = () => {
     const { lang } = useContext(LanguageContext);
 
     const { setIsKvkkOpen, setIsRulesOpen, setIsRedirectModalOpen } = useContext(ModalContext);
-    const { setComplete, setError } = useContext(FeedbackContex);
+    const { setComplete, setError, setUserExist, setRateLimit } = useContext(FeedbackContex);
 
     const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -29,19 +29,32 @@ const Form = () => {
             department: formData.get("department")!.toString(),
         }
 
-        const res = await axios.post("../api/users", data);
-
-        switch (res.status) {
-            case 201:
-                localStorage.setItem("name", res.data.fullName);
-                setComplete(true);
-                break;
-            case 401:
-                setError(true);
-                break;
-            default:
-                break;
+        try {
+            const res = await axios.post("../api/users", data);
+            switch (res.status) {
+                case 201:
+                    localStorage.setItem("access", res.data.token);
+                    setComplete(true);
+                    break;
+                case 200:
+                    localStorage.setItem("access", res.data.token);
+                    setUserExist(true);
+                    break;
+                case 401:
+                    setIsRedirectModalOpen(false);
+                    setError(true);
+                    break;
+                case 500:
+                    setIsRedirectModalOpen(false);
+                    setRateLimit(true);
+                    break;
+                default:
+                    break;
+            }
+        } catch {
+            setError(true);
         }
+
     }
 
   return (

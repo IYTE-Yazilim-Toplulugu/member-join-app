@@ -35,6 +35,7 @@ export default function RootLayout({
 
     // Feedbacks
     const [error, setError] = useState<boolean>(false);
+    const [rateLimit, setRateLimit] = useState<boolean>(false);
     const [userExist, setUserExist] = useState<boolean>(false);
     const [complete, setComplete] = useState<boolean>(false);
     const [counter, setCounter] = useState<number>(6);
@@ -51,7 +52,8 @@ export default function RootLayout({
                         error, setError,
                         userExist, setUserExist,
                         complete, setComplete,
-                        counter, setCounter
+                        counter, setCounter,
+                        rateLimit, setRateLimit
                     }}>
                         {children}
                     </FeedbackContex.Provider>
