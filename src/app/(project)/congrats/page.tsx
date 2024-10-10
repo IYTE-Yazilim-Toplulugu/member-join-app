@@ -12,6 +12,8 @@ import axios from 'axios';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useRouter } from 'next/navigation';
+import { ModalContext } from '@/context/ModalContext';
+import { FeedbackContex } from '@/context/FeedbackContext';
 
 
 
@@ -20,7 +22,13 @@ const Congrats = () => {
   const [isValid, setIsValid] = useState<boolean>(false);
   const router = useRouter();
 
+  const { setIsRedirectModalOpen } = useContext(ModalContext);
+  const { setCounter } = useContext(FeedbackContex);
+
   useEffect(() => {
+    setIsRedirectModalOpen(false);
+    setCounter(6);
+
     const testuser = async () => {
       const token = localStorage.getItem("access");
       try {
