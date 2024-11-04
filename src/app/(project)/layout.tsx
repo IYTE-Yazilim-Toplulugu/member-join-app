@@ -4,6 +4,7 @@ import { LanguageContext } from "@/context/LanguageContext";
 import { ModalContext } from "@/context/ModalContext";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { RegistirationContext } from "@/context/RegistirationContext";
 
 export default function RootLayout({
     children,
@@ -40,6 +41,10 @@ export default function RootLayout({
     const [complete, setComplete] = useState<boolean>(false);
     const [counter, setCounter] = useState<number>(6);
     
+
+    // Registration
+    const [reg, setRegistiration] = useState<boolean>(false);
+    
     return (
         <main>
             <LanguageContext.Provider value={{ lang, setLang }}>
@@ -55,7 +60,9 @@ export default function RootLayout({
                         counter, setCounter,
                         rateLimit, setRateLimit
                     }}>
-                        {children}
+                        <RegistirationContext.Provider value={{ reg, setRegistiration}}>
+                            {children}
+                        </RegistirationContext.Provider>
                     </FeedbackContex.Provider>
                 </ModalContext.Provider>
             </LanguageContext.Provider>

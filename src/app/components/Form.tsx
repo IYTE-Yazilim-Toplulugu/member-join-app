@@ -58,7 +58,7 @@ const Form = () => {
     }
 
   return (
-    <form onSubmit={onSubmit} className='flex flex-col gap-4 -mt-16'>
+    <form onSubmit={onSubmit} className='flex flex-col gap-4 mt-8'>
         <input required type="text" name="school_number" placeholder={lang == "tr" ? "Okul Numaran (i.e. 210201042)" : "Student ID (i.e. 210201042)"} className='inputStyle' />
 
         <input required type="text" name="name" placeholder={lang == "tr" ? "İsim Soyisim Giriniz" : "Your Full Name"} className='inputStyle' />
