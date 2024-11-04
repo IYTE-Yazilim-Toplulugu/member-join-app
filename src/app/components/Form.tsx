@@ -72,21 +72,21 @@ const Form = () => {
             <option value="Bilgisayar Mühendisliği">{lang == "tr" ? "Bilgisayar Mühendisliği" : "Computer Engineering"}</option>
             <option value="Elektronik ve Haberleşme Mühendisliği">{lang == "tr" ? "Elektronik ve Haberleşme Mühendisliği" : "Electronics and Communication Engineering"}</option>
             <option value="İnşaat Mühendisliği">{lang == "tr" ? "İnşaat Mühendisliği" : "Civil Engineering"}</option>
-            <option value="Makine Mühendisliği">{lang == "tr" ? "Makine Mühendisliği" : "Mechanical Engineering"}</option>
+            <option value="Makine Mühendisliği">{lang == "tr" ? "Makina Mühendisliği" : "Mechanical Engineering"}</option>
             <option value="Biyomühendislik">{lang == "tr" ? "Biyomühendislik" : "Bioengineering"}</option>
             <option value="Çevre Mühendisliği">{lang == "tr" ? "Çevre Mühendisliği" : "Environmental Engineering"}</option>
-            <option value="Enerji Sistemleri Mühendisliği">{lang == "tr" ? "Enerji Sistemleri Mühendisliği" : "Energy systems Engineering"}</option>
+            <option value="Enerji Sistemleri Mühendisliği">{lang == "tr" ? "Enerji Sistemleri Mühendisliği" : "Energy Systems Engineering"}</option>
             <option value="Gıda Mühendisliği">{lang == "tr" ? "Gıda Mühendisliği" : "Food Engineering"}</option>
             <option value="Kimya Mühendisliği">{lang == "tr" ? "Kimya Mühendisliği" : "Chemical Engineering"}</option>
-            <option value="Malzeme Bilimi ve Mühendisliği">{lang == "tr" ? "Malzeme Bilimi ve Mühendisliği" : "Material science and Engineering"}</option>
-            <option value="Fizik">{lang == "tr" ? "Fizik" : "Physical"}</option>
+            <option value="Malzeme Bilimi ve Mühendisliği">{lang == "tr" ? "Malzeme Bilimi ve Mühendisliği" : "Material Science and Engineering"}</option>
+            <option value="Fizik">{lang == "tr" ? "Fizik" : "Physics"}</option>
             <option value="Fotonik">{lang == "tr" ? "Fotonik" : "Photonics"}</option>
-            <option value="Kimya">{lang == "tr" ? "Kimya" : "Chemical"}</option>
-            <option value="Matematik">{lang == "tr" ? "Matematik" : "Maths"}</option>
+            <option value="Kimya">{lang == "tr" ? "Kimya" : "Chemistry"}</option>
+            <option value="Matematik">{lang == "tr" ? "Matematik" : "Mathematics"}</option>
             <option value="Moleküler Biyoloji ve Genetik">{lang == "tr" ? "Moleküler Biyoloji ve Genetik" : "Molecular Biology and Genetics"}</option>
             <option value="Endüstriyel Tasarım">{lang == "tr" ? "Endüstriyel Tasarım" : "Industrial Design"}</option>
             <option value="Mimarlık">{lang == "tr" ? "Mimarlık" : "Architecture"}</option>
-            <option value="Şehir ve Bölge Planlama">{lang == "tr" ? "Şehir ve Bölge Planlama" : "City and Region Planning"}</option>
+            <option value="Şehir ve Bölge Planlama">{lang == "tr" ? "Şehir ve Bölge Planlama" : "City and Regional Planning"}</option>
         </select>
 
         <div className="w-full flex justify-start items-center mt-4">
