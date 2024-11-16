@@ -43,7 +43,7 @@ export default function RootLayout({
     
 
     // Registration
-    const [reg, setRegistiration] = useState<boolean>(false);
+    const [reg, setRegistiration] = useState<boolean>(true);
     
     return (
         <main>
