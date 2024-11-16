@@ -1,4 +1,4 @@
-import { createContext, useState, Dispatch, SetStateAction } from "react";
+import { createContext, Dispatch, SetStateAction } from "react";
 
 const RegistirationContextState = {
   reg: true,
