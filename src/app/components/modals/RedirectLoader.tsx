@@ -9,12 +9,15 @@ import { CirclesWithBar, Grid } from "react-loader-spinner";
 import { useRouter } from 'next/navigation';
 import { FeedbackContex } from '@/context/FeedbackContext';
 import { LanguageContext } from '@/context/LanguageContext';
+import { RegistirationContext } from '@/context/RegistirationContext';
 
 const RedirectLoader = () => {
     const { isRedirectModalopen, setIsRedirectModalOpen } = useContext(ModalContext);
     const { error, setError, userExist, setUserExist, complete, setComplete, counter, setCounter, rateLimit, setRateLimit } = useContext(FeedbackContex);
 
     const { lang } = useContext(LanguageContext);
+    const { reg } = useContext(RegistirationContext);
+
     const router = useRouter();
 
 
@@ -24,16 +27,19 @@ const RedirectLoader = () => {
         }
         else if (counter == 0) {
           setTimeout(() => {
-            window.open(process.env.NEXT_PUBLIC_WHATSAPP_URL!)
+            window.open(reg ? process.env.NEXT_PUBLIC_WHATSAPP_URL! : process.env.NEXT_PUBLIC_WHATSAPP_URL_O!);
           }, 750);
-          setTimeout(() => router.push("/congrats"), 1000);
+          setTimeout(() => {
+            router.push("/congrats");
+            setComplete(false);
+            setCounter(6);
+          }, 1000);
         }
       }, [counter, complete, router]);
 
   return (
     <Modal
         open={isRedirectModalopen}
-        // onClose={() => }
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

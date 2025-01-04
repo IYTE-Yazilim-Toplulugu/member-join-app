@@ -20,6 +20,11 @@ export default function RootLayout({
     const [lang, setLang] = useState<string | null>("tr");
     const router = useRouter();
     const searchParams = useSearchParams();
+
+    // Registration
+    const [reg, setRegistiration] = useState<boolean>(searchParams.get('rg') == "false" ? false : true);
+
+
     useEffect(() => {
         const browserLang = navigator.language;
         const language = browserLang.startsWith('tr') ? 'tr' : 'en';
@@ -31,6 +36,16 @@ export default function RootLayout({
         else {
             setLang(searchParams.get('lg'));
         }
+
+        if (!searchParams.get('rg')) {
+            const currentPath = window.location.pathname;
+            router.push(`${currentPath}?lg=${language}&rg=true`);
+            setRegistiration(true);
+        }
+        else {
+            setRegistiration(searchParams.get('rg') == "true" ? true : false);
+        }
+
     }, []);
 
 
@@ -41,9 +56,6 @@ export default function RootLayout({
     const [complete, setComplete] = useState<boolean>(false);
     const [counter, setCounter] = useState<number>(6);
     
-
-    // Registration
-    const [reg, setRegistiration] = useState<boolean>(true);
     
     return (
         <main>
@@ -51,7 +63,7 @@ export default function RootLayout({
                 <ModalContext.Provider value={{
                     isKvkkOpen, setIsKvkkOpen,
                     isRulesOpen, setIsRulesOpen,
-                    isRedirectModalopen, setIsRedirectModalOpen
+                    isRedirectModalopen, setIsRedirectModalOpen,
                 }}>
                     <FeedbackContex.Provider value={{
                         error, setError,
@@ -60,7 +72,7 @@ export default function RootLayout({
                         counter, setCounter,
                         rateLimit, setRateLimit
                     }}>
-                        <RegistirationContext.Provider value={{ reg, setRegistiration}}>
+                        <RegistirationContext.Provider value={{ reg, setRegistiration }}>
                             {children}
                         </RegistirationContext.Provider>
                     </FeedbackContex.Provider>

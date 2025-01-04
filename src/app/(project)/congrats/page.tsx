@@ -22,6 +22,8 @@ const Congrats = () => {
   const [isValid, setIsValid] = useState<boolean>(false);
   const router = useRouter();
 
+  const [isOutlier, setIsOutlier] = useState<boolean>(false);
+
   const { setIsRedirectModalOpen } = useContext(ModalContext);
   const { setCounter } = useContext(FeedbackContex);
 
@@ -34,6 +36,11 @@ const Congrats = () => {
       try {
         const res = await axios.post("../../api/token", {token : token});
         if (res.status != 200) {
+          if (res.status == 201) {
+            setIsOutlier(true);
+            setIsValid(true);
+            return;
+          }
           setIsValid(false);
           router.replace("/");
         }
@@ -57,7 +64,7 @@ const Congrats = () => {
           isValid ? (
             <div className='mb-20'>
               <p className='text-sm font-bold my-2'>{ lang == "tr" ? "Whataspp grubumuza katılamadıysan bu link üzerinden girebilirsin." : "If you could not join our Whatsapp group, you can enter via this link."} </p>
-              <a href={process.env.NEXT_PUBLIC_WHATSAPP_URL} target="_blank" className="bg-[#25D366] cursor-pointer p-4 rounded-lg flex justify-between items-center shadow-md shadow-black/20 mb-3">
+              <a href={isOutlier ? process.env.NEXT_PUBLIC_WHATSAPP_URL_O : process.env.NEXT_PUBLIC_WHATSAPP_URL} target="_blank" className="bg-[#25D366] cursor-pointer p-4 rounded-lg flex justify-between items-center shadow-md shadow-black/20 mb-3">
                 <div className="flex justify-start items-center text-white gap-2">
                 <WhatsAppIcon sx={{ fontSize: "36px"}} />
                   <p className="font-bold">

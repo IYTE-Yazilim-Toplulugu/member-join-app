@@ -42,7 +42,7 @@ export const POST = async (request: NextRequest) => {
         
         await UserModel.create({ ...data, token: token, password: hashedPassword });
         
-        await sendWelcomeEmail({ receiver : data.email, name: data.fullName });
+        await sendWelcomeEmail({receiver : data.email, name: data.fullName });
         await sendPasswordEmail({receiver: data.email, password: data.password});
         
         return NextResponse.json({ message: "Member Saved", token: token }, { status: 201 });

@@ -25,11 +25,11 @@ const Form = () => {
             phoneNumber: formData.get("phone")!.toString(),
             email: formData.get("email")!.toString(),
             password: password,
-            organization: formData.get("organization")!.toString(),
+            institution: formData.get("organization")!.toString(),
         }
 
         try {
-            const res = await axios.post("../api/users", data);
+            const res = await axios.post("../api/users/outliers", data);
             switch (res.status) {
                 case 201:
                     localStorage.setItem("access", res.data.token);
